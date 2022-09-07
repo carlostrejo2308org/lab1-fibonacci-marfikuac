@@ -2,6 +2,12 @@
 # F_0 = 0, F_1 = 1, F_2 = 1, ...
 
 def fib_iter(n):
+    if n < 0:
+        raise Exception('Argumento menor a 0 no válido.')
+
+    if n == 0:
+        return '0'
+
     seq = []
     a = 0
     b = 1
@@ -18,6 +24,12 @@ def fib_iter(n):
 
 
 def fib_recur(n):
+    if n < 0:
+        raise Exception('Argumento menor a 0 no válido.')
+
+    if n == 0:
+        return '0'
+
     seq = [0, 1]
     _fib_recur(n - 2, 0, 1, seq)
     return ' '.join([str(x) for x in seq])
