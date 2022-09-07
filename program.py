@@ -2,37 +2,40 @@
 # F_0 = 0, F_1 = 1, F_2 = 1, ...
 
 def fib_iter(n):
+    seq = []
     a = 0
     b = 1
-    print(a, end=" ")
-    print(b, end=" ")
+    seq.append(a)
+    seq.append(b)
     i = 2
     while i <= n:
         c = a + b
-        print(c, end=" ")
+        seq.append(c)
         a = b
         b = c
         i = i + 1
+    return ' '.join([str(x) for x in seq])
 
 
 def fib_recur(n):
-    print(0, end=" ")
-    print(1, end=" ")
-    _fib_recur(n - 2, 0, 1)
+    seq = [0, 1]
+    _fib_recur(n - 2, 0, 1, seq)
+    return ' '.join([str(x) for x in seq])
 
 
-def _fib_recur(n, a, b):
+def _fib_recur(n, a, b, seq):
     if n < 0:
         return
     c = a + b
-    print(c, end=" ")
-    _fib_recur(n - 1, b, c)
+    seq.append(c)
+    _fib_recur(n - 1, b, c, seq)
 
+n = 15
 
 print("Iterativo:")
-fib_iter(15)
+print(fib_iter(n))
+
 print()
 
 print("Recursivo:")
-fib_recur(15)
-print()
+print(fib_recur(n))
